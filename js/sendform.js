@@ -3,8 +3,8 @@
 // =======================================================
 
 
-const BOT_TOKEN = '5651735192:AAFJtirBsqwXS6aRfpd130bORlUUiAcVpWY';
-const CHAT_ID = '988404976';
+const BOT_TOKEN = '';
+const CHAT_ID = '';
 const API_URL = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
 // Находим поле телефона на странице
