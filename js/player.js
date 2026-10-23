@@ -51,14 +51,14 @@ if (playBtn) {
     }, 100);
   });
 
-  // Автопереключение на поток Юмор FM (лимит прослушивания 1 минута)
+  // Автопереключение на поток Радио Релакс (лимит прослушивания 30 сек)
   audioAd.addEventListener('ended', function() {
     clearInterval(progressInterval);
     
     playerStatus.innerHTML = "🟢 В ЭФИРЕ";
     playerStatus.className = "player-status live-mode";
-    stationName.innerHTML = "Online Radio";
-    playBtn.innerHTML = "⏹ ОСТАНОВИТЬ РАДИО";
+    stationName.innerHTML = "ONLINE RADIO";
+    playBtn.innerHTML = "⏹ ОСТАНОВИТЬ";
     
     progressFill.style.width = "100%";
     progressFill.style.background = "#30d158";
@@ -89,7 +89,7 @@ if (playBtn) {
         
         playerStatus.innerHTML = "🛑 ДЕМО-РЕЖИМ ЗАВЕРШЕН";
         playerStatus.className = "player-status"; 
-        stationName.innerHTML = "Здорово, правда?!.. 🤩";
+        stationName.innerHTML = "ЗДОРОВО, ПРАВДА?!..";
         progressFill.style.width = "0%";
         playerTimer.innerHTML = "01:00 / 01:00";
       }
@@ -108,7 +108,7 @@ function stopAllAudio() {
 
   if (playBtn) { playBtn.innerHTML = "▶ ИГРАТЬ ЭФИР"; playBtn.classList.remove('playing'); }
   if (playerStatus) { playerStatus.innerHTML = "Плеер остановлен"; playerStatus.className = "player-status"; }
-  if (stationName) { stationName.innerHTML = "Online Radio"; }
+  if (stationName) { stationName.innerHTML = "ONLINE RADIO"; }
   if (progressFill) { progressFill.style.width = "0%"; }
   if (playerTimer) { playerTimer.innerHTML = "00:00"; }
 }

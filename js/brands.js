@@ -1,8 +1,6 @@
 ﻿// =======================================================
-//// Карусель брендов 
+// КАРУСЕЛЬ БРЕНДОВ: ПОЛНЫЙ АППАРАТНЫЙ ИНТЕРАКТИВ (МЫШЬ + ПАЛЕЦ)
 // =======================================================
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const slider = document.querySelector('.ticker-wrapper');
     const ticker = document.querySelector('.ticker');
@@ -10,69 +8,86 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isDown = false;
     let startX;
-    let scrollLeft;
-    let autoScrollInterval;
+    let baseTranslateX = 0; 
+    let currentX = 0;       
+    let speed = 0.75; // Скорость автопрокрутки (выше = быстрее)
 
-    // 1. ПЕРЕТАСКИВАНИЕ МЫШЬЮ (ДЛЯ ПК)
+    // Функция плавной автопрокрутки (на видеокарте)
+    function animate() {
+        if (!isDown) { // Бежит сама, только когда юзер НЕ держит её пальцем
+            const halfWidth = ticker.scrollWidth / 2;
+
+            if (halfWidth > 0) {
+                currentX -= speed;
+
+                // Бесшовный циклический сброс
+                if (Math.abs(currentX) >= halfWidth) {
+                    currentX = 0;
+                }
+
+                ticker.style.transform = `translate3d(${currentX}px, 0, 0)`;
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+
+    // --- 1. РУЧНОЙ ТАЧ ПАЛЬЦЕМ (ДЛЯ ТЕЛЕФОНОВ) ---
+    slider.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX; // Фиксируем точку касания первого пальца
+        baseTranslateX = currentX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', () => {
+        isDown = false;
+    }, { passive: true });
+
+    slider.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        
+        // Считаем, на сколько пикселей палец сдвинулся от старта
+        const dragDistance = e.touches[0].pageX - startX;
+        let targetX = baseTranslateX + dragDistance;
+
+        // Математика бесконечной петли при ручном перетаскивании
+        const halfWidth = ticker.scrollWidth / 2;
+        if (targetX > 0) targetX -= halfWidth;
+        if (Math.abs(targetX) >= halfWidth) targetX += halfWidth;
+
+        currentX = targetX;
+        ticker.style.transform = `translate3d(${currentX}px, 0, 0)`;
+    }, { passive: true });
+
+
+    // --- 2. РУЧНОЙ ТАЧ МЫШКОЙ (ДЛЯ ПК) ---
     slider.addEventListener('mousedown', (e) => {
         isDown = true;
         ticker.style.cursor = 'grabbing';
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-        stopAutoScroll(); // Останавливаем автопрокрутку, когда юзер тащит сам
+        startX = e.pageX;
+        baseTranslateX = currentX;
     });
 
-    slider.addEventListener('mouseleave', () => {
+    window.addEventListener('mouseup', () => {
+        if (!isDown) return;
         isDown = false;
         ticker.style.cursor = 'grab';
-        startAutoScroll(); // Возвращаем автопрокрутку, если мышь ушла
-    });
-
-    slider.addEventListener('mouseup', () => {
-        isDown = false;
-        ticker.style.cursor = 'grab';
-        startAutoScroll(); // Возвращаем автопрокрутку, когда отпустили мышь
     });
 
     slider.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.5; // Умножаем на 1.5 для скорости прокрутки
-        slider.scrollLeft = scrollLeft - walk;
-    });
-
-    // 2. ДЛЯ ТЕЛЕФОНОВ (ПАЛЬЦЕМ)
-    // Скролл пальцем работает нативно из-за CSS, но нам нужно временно выключать автопрокрутку
-    slider.addEventListener('touchstart', () => {
-        stopAutoScroll();
-    });
-
-    slider.addEventListener('touchend', () => {
-        startAutoScroll();
-    });
-
-
-    // 3. МЯГКАЯ АВТОПРОКРУТКА НА JS (Взамен старой CSS-анимации)
-    // Чтобы строка не стояла мертвым грузом, когда её никто не трогает
-    function startAutoScroll() {
-        if (autoScrollInterval) return;
         
-        autoScrollInterval = setInterval(() => {
-            // Если доскроллили до конца, плавно возвращаемся в начало
-            if (slider.scrollLeft >= (slider.scrollWidth - slider.clientWidth - 1)) {
-                slider.scrollLeft = 0;
-            } else {
-                slider.scrollLeft += 1; // Скорость автопрокрутки (1px за шаг)
-            }
-        }, 30); // Плавность обновления (примерно 30 кадров в секунду)
-    }
+        const dragDistance = e.pageX - startX;
+        let targetX = baseTranslateX + dragDistance;
 
-    function stopAutoScroll() {
-        clearInterval(autoScrollInterval);
-        autoScrollInterval = null;
-    }
+        const halfWidth = ticker.scrollWidth / 2;
+        if (targetX > 0) targetX -= halfWidth;
+        if (Math.abs(targetX) >= halfWidth) targetX += halfWidth;
 
-    // Запускаем автопрокрутку при старте страницы
-    startAutoScroll();
+        currentX = targetX;
+        ticker.style.transform = `translate3d(${currentX}px, 0, 0)`;
+    });
+
+    // Стартуем бесконечный цикл
+    animate();
 });
