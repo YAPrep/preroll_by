@@ -1,0 +1,716 @@
+﻿/* ======================================================= */
+/* 1. БАЗОВЫЕ СБРОСЫ И НАСТРОЙКИ                           */
+/* ======================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-pink: #e21a71;
+    --accent-orange: #ff7a00;
+    --dark-text: #1d1d1f;
+    --light-bg: #f5f5f7;
+    --white: #ffffff;
+}
+
+body {
+    color: var(--dark-text);
+    background-color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden; /* Защита от горизонтального скролла на мобильных */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.grid-2 { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px; 
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+.btn-primary {
+    background-color: var(--primary-pink);
+    color: var(--white);
+}
+.btn-primary:hover {
+    background-color: #be115b;
+    transform: translateY(-2px);
+}
+.btn-outline {
+    border: 2px solid var(--primary-pink);
+    color: var(--primary-pink);
+    background: transparent;
+}
+.btn-outline:hover {
+    background: var(--primary-pink);
+    color: var(--white);
+}
+
+/* Заголовки разделов */
+.section-title {
+    font-size: 2.3rem;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+.section-desc {
+    text-align: center;
+    max-width: 800px;
+    margin: -10px auto 25px;
+    color: #515154;
+    font-size: 1rem;
+}
+
+/* ======================================================= */
+/* 2. ШАПКА САЙТА                                          */
+/* ======================================================= */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+.logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.logo span { color: var(--primary-pink); }
+.nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.nav a:hover { color: var(--primary-pink); }
+
+/* ======================================================= */
+/* 3. ГЛАВНЫЙ ЭКРАН (HERO)                                 */
+/* ======================================================= */
+.hero {
+    padding: 45px 0;
+    background: linear-gradient(135deg, #fff 50%, #fdf0f5 100%);
+}
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+.hero-content {
+    max-width: 550px; 
+}
+.hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--primary-pink);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.hero-content p {
+    font-size: 1rem;
+    color: #515154;
+    margin-bottom: 20px;
+}
+.hero-image {
+    flex-shrink: 0;
+}
+.responsive-img {
+    max-width: 100%;
+    width: 380px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.08)); 
+}
+
+/* ======================================================= */
+/* 4. СЕКЦИЯ "О СЕРВИСЕ"                                   */
+/* ======================================================= */
+.about {
+    background: var(--light-bg);
+    padding: 55px 0;
+}
+
+.about .section-title {
+    margin-bottom: 40px;
+}
+
+/* Сетка для списка 2х2 */
+.about-grid-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 50px; /* Отступы между колонками и строками */
+    padding: 0;
+}
+
+.about-grid-list li {
+    position: relative;
+    padding-left: 30px;
+}
+
+/* Розовые маркеры-точки в исходном стиле */
+.about-grid-list li::before {
+    content: "•";
+    color: var(--primary-pink);
+    font-size: 2rem;
+    position: absolute;
+    left: 5px;
+    top: -7px;
+}
+
+.about-grid-list li strong {
+    display: block;
+    font-size: 1.15rem;
+    color: var(--dark-text);
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.about-grid-list li p {
+    font-size: 0.95rem;
+    color: var(--gray-text);
+    line-height: 1.5;
+}
+
+/* ======================================================= */
+/* 5. РАДИОСТАНЦИИ (ПЛОЩАДКИ)                              */
+/* ======================================================= */
+.stations {
+    padding: 45px 0;
+    background-color: var(--white);
+}
+.stations h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: var(--dark-text);
+    font-weight: 600;
+}
+.logo-card {
+    background: #ffffff;
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+}
+.logo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(226, 26, 113, 0.08);
+    border-color: rgba(226, 26, 113, 0.2);
+}
+.logo-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+	padding-top: 5px; 
+}
+.logo-grid .logo-card {
+    height: 105px;   
+    padding: 6px;    
+}
+.logo-grid.spec-bel {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; 
+    max-width: 760px; 
+    margin: 0 auto;   
+}
+.logo-grid.spec-bel .logo-card {
+    height: 110px; 
+    padding: 8px;   
+}
+.stations-block + .stations-block {
+    margin-top: 30px !important;
+}
+
+/* ======================================================= */
+/* 6. МЕСЯЧНАЯ АУДИТОРИЯ                                   */
+/* ======================================================= */
+.audience {
+    padding: 45px 0;
+    background-color: #f5f5f7;
+}
+.audience .stat-box {
+    padding: 35px;
+    border-radius: 20px;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+.audience .grid-2 .stat-box:first-child {
+    background: linear-gradient(45deg, var(--primary-pink), #ff4b91);
+}
+.audience .grid-2 .stat-box:last-child {
+    background: linear-gradient(45deg, var(--accent-orange), #ff9e43);
+}
+.stat-num {
+    font-size: 3.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+}
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.4;
+    max-width: 450px;
+    margin: 0 auto;
+    font-weight: 500;
+}
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 25px;
+}
+.insight-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e5e5ea;
+}
+.insight-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+.insight-card h4 {
+    font-size: 1.15rem;
+    color: var(--dark-text);
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+.insight-card p {
+    font-size: 0.95rem;
+    color: #515154;
+    line-height: 1.5;
+}
+.insight-card strong {
+    color: var(--primary-pink);
+    font-size: 1.05rem;
+}
+
+/* ======================================================= */
+/* 7. ОСОБЕННОСТИ ФОРМАТА И КОМПАКТНЫЙ ПЛЕЕР               */
+/* ======================================================= */
+.control {
+    padding: 45px 0;
+    background-color: var(--white);
+}
+.control-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+/* Колонки строго пополам 50/50 */
+.demo-card-clean {
+    flex: 1 !important;
+    max-width: 540px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+.everywhere-card {
+    flex: 1 !important;
+    max-width: 540px !important;
+}
+
+/* Выравнивание шапок заголовков по одной линии */
+.control-wrapper .format-header {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-bottom: 20px;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+.everywhere-card h3 {
+    font-size: 1.5rem !important;
+    color: var(--dark-text) !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Корпус виджета плеера */
+.audio-player-demo.compact-player {
+    background: #111113;
+    border-radius: 14px;
+    padding: 8px 15px !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+.player-screen.compact-screen {
+    text-align: center;
+    padding: 2px 10px !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.compact-screen .player-status {
+    font-size: 0.75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #8e8e93;
+    font-weight: 700;
+    margin-bottom: 2px !important;
+}
+.player-status.ad-mode { color: var(--primary-pink); }
+.player-status.live-mode { color: #30d158; }
+
+.compact-screen .station-name {
+    font-size: 0.95rem !important;
+    color: #ffffff;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    max-width: 280px;
+}
+
+/* Полоса прогресса и кнопка */
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #2c2c2e;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+.progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--primary-pink);
+    border-radius: 3px;
+    transition: width 0.1s linear;
+}
+.timer {
+    font-size: 0.85rem;
+    color: #8e8e93;
+    font-family: monospace;
+}
+
+/* Кнопка запуска */
+.player-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+.compact-player .player-btn {
+    background: var(--primary-pink);
+    color: #ffffff;
+    border: none;
+    padding: 8px 25px !important;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem !important;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Убираем transition: all, чтобы трансформация размеров не анимировалась */
+    min-width: 140px; 
+    text-align: center;
+}
+
+/* Стиль кнопки при активном воспроизведении */
+.player-btn.playing {
+    background: #2c2c2e;
+    color: #ff453a;
+}
+
+/* Текстовый список устройств справа */
+.everywhere-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.everywhere-list li {
+    font-size: 0.95rem !important;
+    color: #515154;
+    margin-bottom: 8px !important;
+    line-height: 1.35 !important;
+    position: relative;
+    padding-left: 20px;
+}
+
+.everywhere-list li::before {
+    content: "•";
+    color: var(--primary-pink);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    font-size: 1.3rem;
+}
+
+.everywhere-list li strong {
+    color: var(--dark-text);
+    font-size: 0.95rem !important;
+}
+
+.efficiency-bar {
+    background: linear-gradient(45deg, var(--primary-pink), #ff4b91);
+    color: #ffffff;
+    text-align: center;
+    padding: 22px 20px;
+    border-radius: 16px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(226, 26, 113, 0.12);
+    margin-top: 15px;
+}
+
+/* ======================================================= */
+/* 8. БЕГУЩАЯ СТРОКА КЛИЕНТОВ И СТРЕЛКА                     */
+/* ======================================================= */
+.clients-section {
+    padding: 45px 0;
+    background-color: #f5f5f7;
+    overflow: hidden;
+}
+
+.ticker-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Включаем горизонтальный скролл */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Плавный скролл пальцем на iOS и Android */
+    padding: 10px 0;
+    position: relative;
+    
+    /* Скрываем полосу прокрутки в Firefox и IE/Edge */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+/* Скрываем полосу прокрутки в Chrome, Safari, Opera и новом Edge */
+.ticker-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.ticker-wrapper::before,
+.ticker-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.ticker-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #f5f5f7 0%, transparent 100%);
+}
+
+.ticker-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #f5f5f7 0%, transparent 100%);
+}
+
+.ticker {
+    display: flex;
+    width: max-content;
+    cursor: grab; /* Курсор в виде открытой ладони */
+    user-select: none; /* Запрещаем выделение логотипов синим цветом при перетаскивании */
+}
+
+/* Курсор сжатой ладони в момент перетаскивания */
+.ticker:active {
+    cursor: grabbing; 
+}
+
+.ticker-item {
+    height: 50px;
+    margin: 0 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.65;
+    transition: opacity 0.3s ease;
+}
+
+.ticker-item:hover { 
+    opacity: 1; 
+}
+
+.ticker-item img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    pointer-events: none; /* Защита от случайного "вытягивания" картинки мышкой */
+}
+
+/* ======================================================= */
+/* 9. ФОРМА ЗАЯВКИ, СКАЧИВАНИЕ PDF И ПОДВАЛ                */
+/* ======================================================= */
+.cta-section {
+    padding: 55px 0;
+    background: var(--dark-text);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-container h2 { 
+    font-size: 2.3rem; 
+    margin-bottom: 12px; 
+    font-weight: 700; 
+}
+
+.cta-container p { 
+    color: #a1a1a6; 
+    margin-bottom: 25px; 
+    font-size: 1rem; 
+}
+
+.cta-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cta-form input {
+    padding: 14px 20px;
+    border-radius: 25px;
+    border: none;
+    width: 240px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.cta-form button { 
+    padding: 14px 35px; 
+}
+
+.cta-email-box {
+    margin-top: 30px;
+    font-size: 1rem;
+    color: #a1a1a6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.cta-email-link {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.cta-email-link:hover {
+    color: var(--white);
+    background: rgba(226, 26, 113, 0.15);
+    border-color: rgba(226, 26, 113, 0.4);
+    transform: translateY(-1px);
+}
+
+.footer {
+    padding: 25px 0;
+    background: #111;
+    color: #666;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* ======================================================= */
+/* 10. ПОЛНАЯ АДАПТИВНОСТЬ ДЛЯ ЭКРАНОВ И МОБИЛЬНЫХ          */
+/* ======================================================= */
+@media (max-width: 968px) {
+    .section-title { font-size: 2rem; }
+    .hero-container { flex-direction: column; text-align: center; gap: 30px; }
+    .hero-content h1 { font-size: 2.4rem; }
+    .responsive-img { width: 300px; }
+    
+    /* Перестроение сетки "О сервисе" в один столбец */
+    .about-grid-list { grid-template-columns: 1fr; gap: 25px; }
+    
+    /* Исправление раздела "Месячная аудитория": перестраиваем плашки и карточки в 1 столбец */
+    .audience .grid-2, 
+    .insights-grid { 
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+    }
+    
+    .control-wrapper { flex-direction: column; gap: 20px; }
+    .demo-card-clean, .everywhere-card { max-width: 100%; }
+    
+    .logo-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .logo-grid .logo-card { height: 90px; }
+    .logo-grid.spec-bel { max-width: 100%; }
+    .logo-grid.spec-bel .logo-card { height: 95px; }
+    
+    .cta-form { flex-direction: column; align-items: center; gap: 12px; }
+    .cta-form input { width: 100%; max-width: 400px; }
+    .nav { display: none; } 
+
+    /* Аккуратный адаптивный отступ для блока с почтой */
+    .cta-email-box { margin-top: 20px; padding: 0 10px; font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 2rem; }
+    .stat-num { font-size: 2.5rem; }
+    .efficiency-bar { font-size: 1.15rem; padding: 18px 10px; }
+    .logo-grid, .logo-grid.spec-bel { grid-template-columns: repeat(2, 1fr); }
+    .ticker-item { height: 40px; margin: 0 20px; }
+}

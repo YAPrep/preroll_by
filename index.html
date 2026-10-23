@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прероллы в диджитал аудио — Рекламная сеть радиостанций в Беларуси</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">PREROLL <span>BY</span></div>
+            <nav class="nav">
+                <a href="#about">О сервисе</a>
+                <a href="#stations">Радиостанции</a>
+                <a href="#audience">Аудитория</a>
+                <a href="#control">Особености формата</a>
+            </nav>
+            <a href="#cta" class="btn btn-outline">Связаться</a>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Прероллы в диджитал аудио</h1>
+                <p class="hero-subtitle">Мы предлагаем новую аудиторию, которую до этого не обслуживал рынок аудиорекламы.</p>
+                <p>Уникальная платформа для размещения аудиорекламы перед интернет-аудиопотоками российских и белорусских радиостанций на территории Республики Беларусь.</p>
+                <div class="hero-actions">
+                    <a href="#cta" class="btn btn-primary">Запустить рекламу</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="img/hero-image.png" alt="Прероллы в диджитал аудио" class="responsive-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- О сервисе -->
+<section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О сервисе</h2>
+            
+            <!-- Сетка 2х2 в стиле левой колонки -->
+            <ul class="about-grid-list">
+                <li>
+                    <strong>Уникальная платформа</strong>
+                    <p>Размещение аудиорекламы перед интернет-аудиопотоками российских и белорусских радиостанций, вещающих на территории Республики Беларусь.</p>
+                </li>
+                <li>
+                    <strong>Премиальный формат запуска</strong>
+                    <p>Прероллы проигрываются пользователю ровно в момент, когда он включает радио на сайте, в мобильном приложении, умной колонке или любом другом устройстве.</p>
+                </li>
+                <li>
+                    <strong>100% целевой геотаргетинг</strong>
+                    <p>Аудиоролики слышат только белорусские пользователи. Весь рекламный бюджет расходуется строго на вашу целевую аудиторию.</p>
+                </li>
+                <li>
+                    <strong>Эксклюзивная аудитория</strong>
+                    <p>Белорусская аудитория, которая предпочитает слушать российские радиостанции через интернет.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Радиостанции -->
+<section class="stations" id="stations">
+    <div class="container">
+        <h2 class="section-title">Доступные площадки</h2>
+        <p class="section-desc">Вы можете выбрать подходящие по формату или целевой аудитории или запустить на всех.</p>
+
+        <!-- Блок российских радиостанций -->
+        <div class="stations-block">
+            <h3>Российские радиостанции в Беларуси</h3>
+            
+            <!-- Обертка для безопасного скрытия рядов -->
+            <div class="logo-grid-wrapper" style="position: relative; margin-bottom: 20px;">
+                <!-- Сетка. Изначально добавляем inline-стиль max-height для работы анимации -->
+                <div class="logo-grid" id="ru-stations-grid" style="max-height: 350px; overflow: hidden; transition: max-height 0.5s ease-in-out; position: relative;">
+                    
+                    <!-- 1 ряд -->
+                    <div class="logo-card"><img src="img/fm/rusradio.png" alt="Русское Радио"></div>
+                    <div class="logo-card"><img src="img/fm/novoe.png" alt="Новое Радио"></div>
+                    <div class="logo-card"><img src="img/fm/europaplus.png" alt="Европа Плюс"></div>
+                    <div class="logo-card"><img src="img/fm/record.png" alt="Радио Рекорд"></div>
+                    
+                    <!-- 2 ряд -->
+                    <div class="logo-card"><img src="img/fm/energy.png" alt="Еnergy"></div>
+                    <div class="logo-card"><img src="img/fm/hitfm.png" alt="Хит FM"></div>
+                    <div class="logo-card"><img src="img/fm/radio7.png" alt="Радио 7"></div>
+                    <div class="logo-card"><img src="img/fm/yumorfm.png" alt="Юмор FM"></div>
+                    
+                    <!-- 3 ряд -->
+                    <div class="logo-card"><img src="img/fm/maximum.png" alt="Maximum"></div>
+                    <div class="logo-card"><img src="img/fm/comedy.png" alt="Comedy"></div>
+                    <div class="logo-card"><img src="img/fm/dfm.png" alt="DFM"></div>
+                    <div class="logo-card"><img src="img/fm/retrofm.png" alt="РетроФМ"></div>
+
+                    <!-- 4 ряд (Будет скрыт изначально) -->
+                    <div class="logo-card"><img src="img/fm/montecarlo.png" alt="MonteCarlo"></div>
+                    <div class="logo-card"><img src="img/fm/dorozhnoe.png" alt="Дорожное"></div>
+                    <div class="logo-card"><img src="img/fm/relaxfm.png" alt="РелаксFM"></div>
+                    <div class="logo-card"><img src="img/fm/likefm.png" alt="LikeFM"></div>
+
+                     <!-- 5 ряд (Будет скрыт изначально) -->
+                    <div class="logo-card"><img src="img/fm/studio21.png" alt="Studio21"></div>
+                    <div class="logo-card"><img src="img/fm/romantika.png" alt="Романтика"></div>
+                    <div class="logo-card"><img src="img/fm/zhara.png" alt="Жара"></div>
+                    <div class="logo-card"><img src="img/fm/rodniki.png" alt="Радио Родники"></div>
+                   
+                    <!-- 6 ряд (Будет скрыт изначально) -->
+                    <div class="logo-card"><img src="img/fm/kalina.png" alt="Калина Красная"></div>
+                    <div class="logo-card"><img src="img/fm/detskoe.png" alt="Детское Радио"></div>
+                    <div class="logo-card"><img src="img/fm/iskatel.png" alt="Радио Искатель"></div>
+                    <div class="logo-card"><img src="img/fm/avtoradioru.png" alt="Авторадио"></div>
+
+                    <!-- Слой плавного размытия (градиент в цвет фона) -->
+                    <div id="grid-fade-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, var(--white) 15%, rgba(255, 255, 255, 0)); pointer-events: none; transition: opacity 0.3s ease;"></div>
+                </div>
+            </div>
+
+            <!-- Кнопка раскрытия -->
+            <button class="btn btn-outline toggle-stations-btn" id="toggle-ru-btn" style="display: block; margin: 25px auto 0;">Показать все станции</button>
+        </div>
+
+        <!-- Блок белорусских радиостанций (всегда открыт, так как их мало) -->
+        <div class="stations-block" style="margin-top: 45px;">
+            <h3>Белорусские радиостанции</h3>
+            <div class="logo-grid spec-bel">
+                <div class="logo-card"><img src="img/fm/humfm.png" alt="Юмор FM"></div>
+                <div class="logo-card"><img src="img/fm/avtoradio.png" alt="Авторадио"></div>
+                <div class="logo-card"><img src="img/fm/radiorelax.png" alt="Relax FM"></div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Аудитория -->
+    <section id="audience" class="audience">
+        <div class="container">
+            <h2 class="section-title">Месячная аудитория в digital</h2>
+            <div class="grid-2">
+                <div class="stat-box">
+                    <div class="stat-num">> 2 000 000</div>
+                    <p class="stat-label">уникальных контактов (IP-адресов) в месяц на российских радиостанциях в Беларуси</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">> 500 000</div>
+                    <p class="stat-label">уникальных контактов (IP-адресов) в месяц на белорусских радиостанциях</p>
+                </div>
+            </div>
+
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-icon">📈</div>
+                    <h4>Высокое внимание</h4>
+                    <p><strong>65%</strong> аудитории продолжают слушать радио, когда начинается рекламный блок.</p>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">🔍</div>
+                    <h4>Конверсия в поиск</h4>
+                    <p><strong>55%</strong> после прослушивания рекламы сразу ищут информацию о бренде в интернете.</p>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">🚗</div>
+                    <h4>Где слушают?</h4>
+                    <p>Реклама настигает везде: в автомобиле — <strong>44%</strong>, на работе — <strong>36%</strong>, дома — <strong>17%</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Особенности формата -->
+    <section id="control" class="control">
+        <div class="container">
+            <h2 class="section-title">Особенности формата</h2>
+            
+            <div class="control-wrapper">
+                <!-- Левая колонка: Минималистичный демо-плеер Юмор FM -->
+                <div class="demo-card-clean">
+                    <div class="format-header">
+                        <h3>Как это работает</h3>
+                    </div>
+                    
+                    <div class="audio-player-demo compact-player no-inner-border">
+                        <!-- Скрытые аудио-элементы -->
+                        <audio id="audio-ad" src="img/ad-spot.mp3" preload="auto"></audio>
+                        <audio id="audio-live" src="https://live.humorfm.by:8443/relax" preload="none"></audio>
+
+                        <div class="player-screen compact-screen">
+                            <div class="player-status" id="player-status">Плеер остановлен</div>
+                            <div class="station-name" id="station-name">Online Radio</div>
+                            
+                            <!-- Полоса прогресса -->
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-fill"></div>
+                            </div>
+                            <div class="timer" id="player-timer">00:00</div>
+                        </div>
+                        
+                        <!-- Кнопка управления -->
+                        <div class="player-controls">
+                            <button class="player-btn" id="play-demo-btn">▶ ИГРАТЬ ЭФИР</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая колонка: Реклама звучит везде -->
+                <div class="everywhere-card">
+                    <div class="format-header">
+                        <h3>Реклама звучит везде, где включается радио</h3>
+                    </div>
+                    <ul class="everywhere-list">
+                        <li><strong>Официальные площадки:</strong> Собственные сайты и мобильные приложения радиостанций.</li>
+                        <li><strong>Умные колонки:</strong> Голосовые ассистенты и смарт-динамики.</li>
+                        <li><strong>Веб-сервисы:</strong> Агрегаторы радио, стриминги, плееры, онлайн-игры.</li>
+                        <li><strong>Устройства:</strong> Смарт-ТВ, автомобильные ассистенты, игровые приставки, интернет-радиоприемники.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Плашка под колонками -->
+            <div class="efficiency-bar">
+                Более 90% дослушивает ролик до конца
+            </div>
+        </div>
+    </section>
+
+    <!-- Бегущая строка -->
+    <section class="clients-section">
+        <div class="container">
+            <h2 class="section-title">А они уже пользуются!..</h2>
+        </div>
+        <div class="ticker-wrapper">
+            <div class="ticker">
+                <div class="ticker-item"><img src="img/clients/sber.png" alt="Сбер"></div>
+                <div class="ticker-item"><img src="img/clients/euroopt.png" alt="Евроопт"></div>
+                <div class="ticker-item"><img src="img/clients/betera.png" alt="Betera"></div>
+                <div class="ticker-item"><img src="img/clients/bulbash.png" alt="Бульбашъ"></div>
+                <div class="ticker-item"><img src="img/clients/cocacola.png" alt="Coca-Cola"></div>
+                <div class="ticker-item"><img src="img/clients/bnb.png" alt="Белорусский Народный Банк"></div>
+                <div class="ticker-item"><img src="img/clients/rabota.png" alt="rabota.by"></div>
+                <div class="ticker-item"><img src="img/clients/av.png" alt="av.by"></div>               
+				<div class="ticker-item"><img src="img/clients/21vek.png" alt="21vek"></div>
+                <div class="ticker-item"><img src="img/clients/life.png" alt="life.by"></div>
+                <div class="ticker-item"><img src="img/clients/dolphin.png" alt="Минский дельфинарий"></div>
+                <div class="ticker-item"><img src="img/clients/aquamaris.png" alt="Аквамарис"></div>
+                <div class="ticker-item"><img src="img/clients/detralex.png" alt="Детралекс"></div>
+                <div class="ticker-item"><img src="img/clients/svayak.png" alt="Сваяк"></div>
+                <!-- Дублирование для бесконечного бесшовного круга -->
+                <div class="ticker-item"><img src="img/clients/sber.png" alt="Сбер"></div>
+                <div class="ticker-item"><img src="img/clients/euroopt.png" alt="Евроопт"></div>
+                <div class="ticker-item"><img src="img/clients/betera.png" alt="Betera"></div>
+                <div class="ticker-item"><img src="img/clients/bulbash.png" alt="Бульбашъ"></div>
+                <div class="ticker-item"><img src="img/clients/cocacola.png" alt="Coca-Cola"></div>
+                <div class="ticker-item"><img src="img/clients/bnb.png" alt="Белорусский Народный Банк"></div>
+                <div class="ticker-item"><img src="img/clients/rabota.png" alt="rabota.by"></div>
+                <div class="ticker-item"><img src="img/clients/av.png" alt="av.by"></div>
+				<div class="ticker-item"><img src="img/clients/21vek.png" alt="21vek"></div>
+                <div class="ticker-item"><img src="img/clients/life.png" alt="life.by"></div>
+                <div class="ticker-item"><img src="img/clients/dolphin.png" alt="Минский дельфинарий"></div>
+                <div class="ticker-item"><img src="img/clients/aquamaris.png" alt="Аквамарис"></div>
+                <div class="ticker-item"><img src="img/clients/detralex.png" alt="Детралекс"></div>
+                <div class="ticker-item"><img src="img/clients/svayak.png" alt="Сваяк"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок обратной связи -->
+    <section id="cta" class="cta-section">
+        <div class="container cta-container">
+            <h2>Готовы запустить эффективную аудиорекламу?</h2>
+            <p>Оставьте заявку, и мы поможем Вам громче заявить о себе.</p>
+            <form class="cta-form" id="tg-form">
+                <input type="text" id="user_name" placeholder="Ваше имя" required>
+                <input type="tel" id="user_phone" placeholder="Телефон" maxlength="13" required>
+                <input type="text" id="user_company" placeholder="Название компании" required>
+                <button type="submit" class="btn btn-primary">Связаться!</button>
+            </form>
+            
+            <div class="cta-email-box">
+                Или напишите нам на <a href="mailto:info@preroll.by" class="cta-email-link">info@preroll.by</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container">
+            <p> Unique Preroll Service from Digital Media, BY &copy; 2026 </p>
+        </div>
+    </footer>
+
+
+<script src="js/brands.js" defer></script>
+<script src="js/player.js" defer></script>
+<script src="js/stations.js" defer></script>
+<script src="js/sendform.js" defer></script>
+</body>
+</html>
