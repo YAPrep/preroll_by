@@ -359,6 +359,14 @@ html {
     border: none !important;
     box-shadow: none !important;
 }
+
+.demo-card-clean h3 {
+    font-size: 1.4rem !important;
+    color: var(--dark-text) !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0 !important;
+}
 .everywhere-card {
     flex: 1 !important;
     max-width: 540px !important;
@@ -374,7 +382,7 @@ html {
     padding-bottom: 0 !important;
 }
 .everywhere-card h3 {
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
     color: var(--dark-text) !important;
     font-weight: 700 !important;
     line-height: 1.2 !important;
@@ -385,19 +393,21 @@ html {
 .audio-player-demo.compact-player {
     background: #111113;
     border-radius: 14px;
-    padding: 8px 15px !important;
+    padding: 8px 15px;
     margin: 0 !important;
     border: none !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    padding: 10px 15px;
 }
 .player-screen.compact-screen {
     text-align: center;
-    padding: 2px 10px !important;
+    padding: 4px 10px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 82px;
 }
 .compact-screen .player-status {
     font-size: 0.75rem !important;
@@ -447,21 +457,28 @@ html {
 .player-controls {
     display: flex;
     justify-content: center;
-    margin-top: 3px;
+	padding-top: 4px;
 }
 
 .compact-player .player-btn {
     background: var(--primary-pink);
     color: #ffffff;
     border: none;
-    padding: 8px 25px !important;
     border-radius: 20px;
     font-weight: 700;
-    font-size: 0.85rem !important;
+    font-size: 0.85rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Убираем transition: all, чтобы трансформация размеров не анимировалась */
-    min-width: 140px; 
-    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    
+    /* РЕШЕНИЕ ПРОБЛЕМЫ: Жестко фиксируем высоту кнопки и выравнивание */
+    height: 36px; 
+    padding: 0 25px; /* Задаем паддинги только по бокам, высота контролируется через height */
+    min-width: 150px; /* Слегка увеличили, чтобы любое слово сидело свободно */
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; 
 }
 
 /* Стиль кнопки при активном воспроизведении */
@@ -513,7 +530,7 @@ html {
 }
 
 /* ======================================================= */
-/* 8. БЕГУЩАЯ СТРОКА КЛИЕНТОВ И СТРЕЛКА                     */
+/* 8. БЕГУЩАЯ СТРОКА КЛИЕНТОВ (АППАРАТНАЯ СБОРКА)         */
 /* ======================================================= */
 .clients-section {
     padding: 45px 0;
@@ -523,40 +540,46 @@ html {
 
 .ticker-wrapper {
     width: 100%;
-    overflow-x: auto; /* Включаем горизонтальный скролл */
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch; /* Плавный скролл пальцем на iOS и Android */
+    /* КРИТИЧЕСКИЙ ФИКС: полностью убираем нативный скролл, чтобы мобилка не дергалась */
+    overflow: hidden !important; 
     padding: 10px 0;
     position: relative;
     
-    /* Скрываем полосу прокрутки в Firefox и IE/Edge */
+    /* Скрываем полосы прокрутки для старых браузеров на всякий случай */
     -ms-overflow-style: none;  
     scrollbar-width: none;  
 }
 
-/* Скрываем полосу прокрутки в Chrome, Safari, Opera и новом Edge */
+/* Скрываем полосу прокрутки для Webkit-браузеров */
 .ticker-wrapper::-webkit-scrollbar {
-    display: none;
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
-.ticker-wrapper::before,
-.ticker-wrapper::after {
+/* Градиентное размытие по левому краю строки */
+.ticker-wrapper::before {
     content: "";
     position: absolute;
     top: 0;
+    left: 0;
     width: 100px;
     height: 100%;
     z-index: 2;
     pointer-events: none;
-}
-
-.ticker-wrapper::before {
-    left: 0;
     background: linear-gradient(to right, #f5f5f7 0%, transparent 100%);
 }
 
+/* Градиентное размытие по правому краю строки */
 .ticker-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
     right: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
     background: linear-gradient(to left, #f5f5f7 0%, transparent 100%);
 }
 
@@ -565,9 +588,15 @@ html {
     width: max-content;
     cursor: grab; /* Курсор в виде открытой ладони */
     user-select: none; /* Запрещаем выделение логотипов синим цветом при перетаскивании */
+    
+    /* ФИКС ДЛЯ МОБИЛЬНЫХ: строго запрещаем логотипам переноситься и перестраиваться в столбцы */
+    white-space: nowrap !important; 
+    
+    /* Подключаем видеокарту смартфона для ультра-плавного тача и автоскролла */
+    will-change: transform; 
 }
 
-/* Курсор сжатой ладони в момент перетаскивания */
+/* Курсор сжатой ладони в момент перетаскивания (ПК) */
 .ticker:active {
     cursor: grabbing; 
 }
@@ -580,6 +609,9 @@ html {
     justify-content: center;
     opacity: 0.65;
     transition: opacity 0.3s ease;
+    
+    /* ФИКС ДЛЯ МОБИЛЬНЫХ: запрещаем браузеру телефона сплющивать логотипы по ширине */
+    flex-shrink: 0 !important; 
 }
 
 .ticker-item:hover { 
@@ -590,9 +622,8 @@ html {
     height: 100%;
     width: auto;
     object-fit: contain;
-    pointer-events: none; /* Защита от случайного "вытягивания" картинки мышкой */
+    pointer-events: none; /* Защита от случайного вытягивания картинки синей рамкой */
 }
-
 /* ======================================================= */
 /* 9. ФОРМА ЗАЯВКИ, СКАЧИВАНИЕ PDF И ПОДВАЛ                */
 /* ======================================================= */
@@ -713,4 +744,9 @@ html {
     .efficiency-bar { font-size: 1.15rem; padding: 18px 10px; }
     .logo-grid, .logo-grid.spec-bel { grid-template-columns: repeat(2, 1fr); }
     .ticker-item { height: 40px; margin: 0 20px; }
+    .compact-player .player-btn {
+        font-size: 0.8rem;
+        padding: 0 15px; /* Уменьшаем боковые отступы на мобилке, чтобы кнопка не сжималась */
+        min-width: 130px;
+    }
 }
