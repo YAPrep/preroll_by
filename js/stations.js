@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (grid.style.maxHeight === '350px') {
                 // Раскрываем (высчитываем полную высоту контента внутри сетки)
                 grid.style.maxHeight = grid.scrollHeight + 'px';
-                button.textContent = 'Скрыть часть станций';
+                button.textContent = 'Скрыть';
                 fade.style.opacity = '0'; // Убираем размытие нижнего края
             } else {
                 // Сворачиваем обратно

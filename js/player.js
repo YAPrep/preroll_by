@@ -106,7 +106,7 @@ function stopAllAudio() {
   if (audioAd) { audioAd.pause(); audioAd.currentTime = 0; }
   if (audioLive) { audioLive.pause(); audioLive.src = ""; }
 
-  if (playBtn) { playBtn.innerHTML = "▶ ИГРАТЬ ЭФИР"; playBtn.classList.remove('playing'); }
+  if (playBtn) { playBtn.innerHTML = "▶ ЗАПУСТИТЬ"; playBtn.classList.remove('playing'); }
   if (playerStatus) { playerStatus.innerHTML = "Плеер остановлен"; playerStatus.className = "player-status"; }
   if (stationName) { stationName.innerHTML = "ONLINE RADIO"; }
   if (progressFill) { progressFill.style.width = "0%"; }
