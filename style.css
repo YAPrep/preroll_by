@@ -317,10 +317,10 @@ html {
     border-radius: 12px;
     border: 1px solid #e5e5ea;
 }
-.insight-icon {
+/*.insight-icon {
     font-size: 1.8rem;
     margin-bottom: 10px;
-}
+}   */
 .insight-card h4 {
     font-size: 1.15rem;
     color: var(--dark-text);
